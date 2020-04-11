@@ -1,0 +1,15 @@
+@import "../common_style";
+.login-container {
+    .create-account-callout {
+        padding: 15px 20px;
+        text-align: center;
+        border: 1px solid #d8dee2;
+        border-radius: 5px;
+    }
+    .label-container {
+        display: block;
+        .label-link {
+            float: right;
+        }
+    }
+}

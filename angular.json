@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "GoogleKeepUi": {
@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "GoogleKeepUi"
+    }
+  },
+  "defaultProject": "GoogleKeepUi",
+  "cli": {
+    "analytics": "a90d9c3d-60fd-4ae7-9bc4-e1cfc0e1414c"
+  }
 }
