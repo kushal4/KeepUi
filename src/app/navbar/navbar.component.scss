@@ -1,0 +1,45 @@
+.nav-container {
+    padding: 8px;
+    border-bottom: 1px solid;
+    .m-middle {
+        position: absolute;
+        right: 29%;
+        top: 12%;
+        flex: 1 1 auto;
+        min-width: 720px;
+        max-width: 720px;
+    }
+    .user-pos {
+        position: absolute;
+        right: 10%;
+        cursor: pointer;
+    }
+    .width-full {
+        width: 100%;
+    }
+    .app-search {
+        position: absolute;
+        top: 18%;
+        right: 1%;
+    }
+    .user-account-holder {
+        position: absolute;
+        top: 2%;
+        // margin-top: 2%;
+        display: block;
+        background-size: 32px 32px;
+        border-radius: 50%;
+        overflow: hidden;
+        height: 32px;
+        width: 32px;
+        z-index: 0;
+        &::before {
+            position: absolute;
+            content: url(https://lh3.googleusercontent.com/-iwtq_aa1yzo/AAAAAAAAAAI/AAAAAAAAAAA/AAKWJJM_VIsO5YkY9v9AVY0Cs-09opLhkQ.CMID/s32-c/photo.jpg);
+        }
+    }
+    .nav-shadow {
+        padding: 12px;
+        box-shadow: inset 0 -1px 0 0 #dadce0;
+    }
+}

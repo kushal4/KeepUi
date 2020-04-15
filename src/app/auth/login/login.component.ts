@@ -1,4 +1,8 @@
+import { Token } from './../../utils/Token';
+import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserLogin } from "../../models/User";
 
 @Component({
   selector: 'app-login',
@@ -7,17 +11,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  login={
+  loginModel:UserLogin={
     username:null,
     password:null
   };
-  constructor() { }
+  errorMsg:UserLogin=null;
+  constructor(private authService:AuthService,private router:Router,private tokenObj:Token) { }
 
   ngOnInit(): void {
   }
 
-  save(){
-    console.log(this.login);
+  async save(){
+    this.errorMsg=null;
+    try{
+      let user_obj=await this.authService.login(this.loginModel);
+      console.log(user_obj);
+      let token=user_obj["access_token"];
+        this.tokenObj.save(token);
+        this.router.navigate(["/home"]);
+    }catch(err_response){
+        console.log(err_response);
+        this.errorMsg=err_response["errors"];
+        console.log(this.errorMsg);
+    }
+
   }
 
 }

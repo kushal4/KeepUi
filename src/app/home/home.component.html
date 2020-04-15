@@ -1,0 +1,4 @@
+<div class="home-container">
+    <app-navbar (searchChange)="fetchNoteSearched($event)"></app-navbar>
+    <app-notes [noteSearched]="noteSearched"></app-notes>
+</div>
