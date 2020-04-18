@@ -1,6 +1,6 @@
 <div class="notes-container">
     <div class="container">
-        <button class="btn btn-primary center-align-btn" (click)="openModal('custom-modal-1')">Add Notes</button>
+        <button class="btn btn-primary center-align-btn" (click)="openModal('custom-modal-1',title,body)">Add Notes</button>
         <jw-modal id="custom-modal-1" class="notes-modal">
             <i class="fa fa-times-circle flt-right" aria-hidden="true" (click)="closeModal('custom-modal-1');"></i>
             <form [formGroup]="uploadForm" (ngSubmit)="submitForm()">
@@ -9,10 +9,10 @@
                         <img name="notesImg" #prviewImg src="" alt="" height="460">
                     </div>
                     <div-input formControlName="title">
-                        <div contentEditable=true data-ph="Title" class="notes-title"></div>
+                        <div #title contentEditable=true data-ph="Title" class="notes-title"></div>
                     </div-input>
                     <div-input formControlName="body">
-                        <div contentEditable=true data-ph="Take a note ...." class="notes-content"></div>
+                        <div #body contentEditable=true data-ph="Take a note ...." class="notes-content"></div>
                     </div-input>
 
 
@@ -43,7 +43,7 @@
                             <div class="notes-content">{{note.body}}</div>
                         </div>
                         <div class="notes-footer">
-                            <mat-checkbox (change)="markDone(note.is_done,note.id)" [checked]="note.is_done" class="flt-right">Done</mat-checkbox>
+                            <mat-checkbox (change)="markDone(note.is_done,note.id?note.id:note._id)" [checked]="note.is_done" class="flt-right">Done</mat-checkbox>
                         </div>
                     </div>
                 </div>

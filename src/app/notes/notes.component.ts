@@ -48,7 +48,9 @@ export class NotesComponent implements OnInit,OnChanges {
    }):this.notes;
   }
 
-  openModal(id: string) {
+  openModal(id: string,title:HTMLDivElement,body:HTMLDivElement) {
+    title.innerText="";
+    body.innerText="";
    let cur_modal= this.modalService.open(id);
    console.log(cur_modal);
 }
@@ -60,7 +62,7 @@ closeModal(id: string) {
 processFile(files: any,previewImg:HTMLImageElement=null) {
   this.selectedFile = undefined;
 
-  //const URL = window.URL;
+  const URL = window.URL;
   let file, img;
   console.log(files);
   if ((file = files[0]) && (file.type === 'image/png' || file.type === 'image/jpeg')) {
@@ -76,7 +78,7 @@ processFile(files: any,previewImg:HTMLImageElement=null) {
        }
     }
 
-    //img.src = URL.createObjectURL(file);
+    img.src = URL.createObjectURL(file);
     previewImg.src=img.src;
     console.log(img);
   } else {
@@ -104,12 +106,17 @@ async submitForm(){
   //console.log(this.uploadForm.value);
 }
 
-markDone(is_done,note_id){
+async markDone(is_done,note_id){
+try{
+      console.log("note id ::",note_id);
+      let mark_obj={
+        is_done: !is_done
+      };
+      this.filteredNotes= this.notes= (await this.notesService.markDone(note_id,mark_obj))["notes"];
+    }catch(ex){
+      console.log(ex);
+    }
 
-  let mark_obj={
-    is_done: !is_done
-  };
-  this.notesService.markDone(note_id,mark_obj);
 }
 
 
